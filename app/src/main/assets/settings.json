@@ -57,22 +57,22 @@
     "items": [
       {
         "title": "Glavna lista (reklame, malver, phishing, prevare, kripto-majning)",
-        "location": "https://raw.githubusercontent.com/kuranovicka/dns66/main/zbogomreklame_hosts.txt",
+        "location": "https://raw.githubusercontent.com/kuranovicka/ZbogomReklame/main/zbogomreklame_hosts.txt",
         "state": 0
       },
       {
         "title": "Filter kockanja",
-        "location": "https://raw.githubusercontent.com/kuranovicka/dns66/main/filter_kockanje.txt",
+        "location": "https://raw.githubusercontent.com/kuranovicka/ZbogomReklame/main/filter_kockanje.txt",
         "state": 2
       },
       {
         "title": "Filter sadržaja za odrasle",
-        "location": "https://raw.githubusercontent.com/kuranovicka/dns66/main/filter_odraslih.txt",
+        "location": "https://raw.githubusercontent.com/kuranovicka/ZbogomReklame/main/filter_odraslih.txt",
         "state": 2
       },
       {
         "title": "Filter lažnih vesti",
-        "location": "https://raw.githubusercontent.com/kuranovicka/dns66/main/filter_lazne_vesti.txt",
+        "location": "https://raw.githubusercontent.com/kuranovicka/ZbogomReklame/main/filter_lazne_vesti.txt",
         "state": 2
       }
     ]
