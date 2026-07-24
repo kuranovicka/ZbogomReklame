@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context="org.jak_linux.dns66.main.StartFragment">
+
+    <include layout="@layout/extra_bar_start"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <Button
+                android:id="@+id/start_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:minHeight="72dp"
+                android:background="@drawable/pill"
+                android:backgroundTint="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="Activate"
+                android:textColor="?android:attr/textColorPrimaryInverse"/>
+
+            <Button
+                android:id="@+id/refresh_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:minHeight="72dp"
+                android:background="@drawable/pill"
+                android:backgroundTint="@color/colorAccent"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="@string/button_refresh"
+                android:textColor="?android:attr/textColorPrimaryInverse"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/stats_history_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:textSize="14sp"
+            android:text="@string/stats_history_label"/>
+
+        <org.jak_linux.dns66.main.SimpleBarChartView
+            android:id="@+id/stats_chart"
+            android:layout_width="220dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="4dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

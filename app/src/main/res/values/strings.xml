@@ -1,0 +1,134 @@
+<resources>
+    <string name="app_name" translatable="false">ZbogomReklame</string>
+    <string name="app_shortdesc">Blokiranje reklama i prilagođeni DNS serveri</string>
+    <string name="custom_dns">Prilagođeni DNS serveri</string>
+    <string name="enable_hosts">Filtriraj domene</string>
+    <string name="start_tab">Početak</string>
+    <string name="hosts_tab">Liste</string>
+    <string name="dns_tab">DNS</string>
+    <string name="action_export">Izvezi podešavanja</string>
+    <string name="action_import">Uvezi podešavanja</string>
+    <string name="action_save">Gotovo</string>
+    <string name="load_defaults">Resetuj podešavanja (vrati podrazumevano)</string>
+    <string name="action_about">O programu</string>
+    <string name="action_help">Pomoć</string>
+    <string name="action_copy_text">Kopiraj tekst</string>
+    <string name="action_share">Podeli</string>
+    <string name="copied_to_clipboard">Tekst je kopiran.</string>
+    <string name="generic_error">Nešto nije uspelo. Probaj ponovo.</string>
+    <string name="action_add_exception">Dodaj izuzetak</string>
+    <string name="action_add_dns_server">Dodaj DNS server</string>
+    <string name="help_text">Dobrodošla u ZbogomReklame.\nOva pomoć je napisana jednostavno, korak po korak.\n\nŠta ova aplikacija radi?\nOna blokira reklame, prevare i opasne sajtove.\nRadi to tako što proverava svaki sajt pre nego što se otvori.\nAko je sajt na crnoj listi, ne pušta ga.\nAko sajt nije opasan, propušta ga normalno.\n\nKartica Početak.\nOvo je prva kartica, na dnu ekrana, levo.\nTu je glavno dugme.\nDugme se zove Pokreni, ili Zaustavi, kad je aplikacija uključena.\nKad prvi put pritisneš Pokreni, telefon će te pitati za dozvolu.\nTa poruka pita da li dozvoljavaš VPN vezu.\nPritisni OK, ili Dozvoli.\nTo je normalno, i bezbedno.\nAplikacija ne šalje tvoje podatke nikome.\nNa ovoj kartici vidiš i status: da li je zaštita uključena, ili isključena.\nVidiš i koliko je upita bilo, i koliko je blokirano, dok je zaštita uključena.\n\nKartica Liste.\nOvo je druga kartica, na dnu ekrana.\nOvde su spiskovi opasnih sajtova.\nPrva stavka je glavna lista.\nOna je uvek uključena, i blokira reklame, prevare i malver.\nIspod nje su tri dodatna filtera.\nPrvi filter je za kockanje.\nDrugi filter je za sadržaj za odrasle.\nTreći filter je za lažne vesti.\nOva tri filtera su isključena po difoltu.\nAko želiš neki od njih, samo prevuci prekidač pored njega.\nPrekidač uključeno znači da taj spisak sajtova blokira.\nPrekidač isključeno znači da je taj filter zanemaren.\nNa ovoj kartici vidiš i broj: koliko je domena trenutno blokirano.\n\nKako dodati izuzetak.\nPonekad aplikacija blokira sajt koji ti treba.\nZa to postoji dugme Dodaj izuzetak.\nNalazi se u meniju sa tri tačke, gore desno na ekranu.\nNa kartici Liste postoji i isto takvo dugme, u donjem desnom uglu ekrana, ako ti je lakše da ga nađeš tako.\nKad ga pritisneš, otvara se novi ekran.\nUpiši ime sajta, na primer: primer.com.\nZa radnju izaberi Dozvoli.\nSačuvaj.\nTaj sajt će sada uvek biti dozvoljen.\n\nKartica DNS.\nOvo je treća kartica.\nOvde se biraju serveri koji pomažu da internet radi.\nAko nisi sigurna, ne moramo ovde ništa da diramo.\n\nKartica Aplikacije.\nOvo je četvrta kartica.\nOvde možeš izabrati da neke aplikacije ne budu filtrirane.\nOvo je za napredne korisnike.\nAko nisi sigurna, ne moramo ni ovde ništa da diramo.\n\nMeni sa još opcija.\nGore desno na ekranu je dugme sa tri tačke.\nTo je meni sa dodatnim opcijama.\nPrva opcija je Osveži liste domena.\nTo preuzima najnoviju verziju svih uključenih lista.\nOdmah posle instalacije, to je dobro prvo uraditi.\nOdmah ispod je Dodaj izuzetak, o kome smo već pričale.\nSledeće opcije su Uvezi i Izvezi podešavanja.\nTo služi za pravljenje rezervne kopije.\nZatim su prekidači za tamnu temu, i za obaveštenje.\nZatim je dugme Pomoć: to je ovaj ekran koji sad čitaš.\nZatim je dugme O programu.\nNa kraju je dugme Resetuj podešavanja.\nTo dugme vraća sve na početno stanje.\nNe briše listu domena sa telefona.\nPoslednja opcija je Logcat.\nTo je tehnički alat, za slučaj da nešto ne radi.\nNjega koristimo samo kad tražimo grešku.\n\nAutomatsko ažuriranje.\nAplikacija sama, jednom dnevno, preuzima nove liste.\nNe moraš ništa da radiš za to.\n\nPokretanje sa telefonom.\nAplikacija se sama pokreće kad upališ telefon.\nOvo je uključeno po difoltu.\n\nKako potpuno ukloniti aplikaciju?\nNije potrebna posebna radnja.\nDovoljno je da je deinstaliraš, kao svaku drugu aplikaciju.\nTelefon će sam obrisati sve što je aplikacija zapisala.\n\nHvala ti što koristiš ZbogomReklame.</string>
+    <string name="info_app_license">Ovaj program je slobodan softver: možete ga dalje deliti i/ili menjati pod uslovima GNU General Public License licence, verzija 3 ili (po vašem izboru) bilo koja novija verzija. Zasnovan je na DNS66 projektu Julian-a Andres-a Klode-a.</string>
+    <string name="info_app_copyright" translatable="false">© 2016-2019 Julian Andres Klode, © 2026 ZbogomReklame</string>
+    <string name="switch_onboot">Nastavi rad posle pokretanja sistema</string>
+    <string name="activity_edit">Izmeni stavku</string>
+    <string name="title">Naziv</string>
+    <string name="location">Lokacija (URL ili domen)</string>
+    <string name="action">Radnja</string>
+    <string name="cannot_restore_previous_config">Nije moguće vratiti prethodna podešavanja: %s</string>
+    <string name="cannot_read_config">Nije moguće pročitati podešavanja: %s</string>
+    <string name="cannot_load_default_config">Nije moguće učitati podrazumevana podešavanja: %s - Ovo ne bi trebalo da se desi</string>
+    <string name="cannot_write_config">Nije moguće upisati podešavanja: %s</string>
+    <string name="action_refresh">Osveži liste domena</string>
+    <string name="button_refresh">Osveži listu</string>
+    <string name="notification_starting">Pokretanje</string>
+    <string name="notification_running">Aktivno</string>
+    <string name="notification_stopping">Zaustavljanje</string>
+    <string name="notification_waiting_for_net">Čekanje na mrežu</string>
+    <string name="notification_reconnecting">Ponovno povezivanje</string>
+    <string name="notification_reconnecting_error">Greška pri ponovnom povezivanju</string>
+    <string name="notification_stopped">Zaustavljeno</string>
+    <string name="notification_title">ZbogomReklame</string>
+    <string-array name="item_states">
+        <item>Blokiraj</item>
+        <item>Dozvoli</item>
+        <item>Zanemari</item>
+    </string-array>
+    <!-- Translate with something like <Language> Translation: Your Name -->
+    <string name="translator_credits"/>
+    <string name="app_version_info">Verzija: %s</string>
+    <string name="missing_hosts_files_message">Neke od podešenih (ne-zanemarenih) lista domena nedostaju.\n\nKoristite radnju „Osveži” da preuzmete liste domena.\n\nDa li ipak želite da nastavite?</string>
+    <string name="missing_hosts_files_title">Nedostaje lista domena</string>
+    <string name="button_no">Ne</string>
+    <string name="button_yes">Da</string>
+    <string name="website" translatable="false">https://github.com/julian-klode/dns66</string>
+    <string name="allowlist_tab">Aplikacije</string>
+    <string name="show_notification">Prikaži obaveštenje</string>
+    <string name="could_not_configure_vpn_service">Nije moguće podesiti VPN servis - Proverite da li koristite stalno uključen VPN servis (npr. WiFi asistent) i isključite ga</string>
+    <string name="dns_description">Uključite željene DNS servere</string>
+    <string name="host_description">Crvena pravila blokiraju, zelena dozvoljavaju</string>
+    <string name="disable_notification_title">Isključivanje obaveštenja</string>
+    <string name="disable_notification_message">Isključivanje obaveštenja može dovesti do toga da sistem zaustavi ZbogomReklame kad ponestane memorije.\n\nDa li želite da isključite obaveštenje?</string>
+    <string name="disable_notification_ack">Isključi obaveštenje</string>
+    <string name="disable_notification_nak">Odustani</string>
+    <string name="allowlist_description">Zaobiđi ZbogomReklame za označene aplikacije</string>
+    <string name="switch_show_system_apps">Prikaži sistemske aplikacije</string>
+    <string name="location_dns">IP adresa DNS servera (IPv4 ili IPv6)</string>
+    <string name="state_dns_enabled">Uključeno</string>
+    <string name="host_update_error_item">Greška %1$d: %2$s</string>
+    <string name="update_incomplete">Ažuriranje nepotpuno</string>
+    <string name="update_incomplete_description">Neke liste domena nije bilo moguće preuzeti. Ako su ranije preuzete, i dalje se koriste stare verzije.</string>
+    <string name="updating_hostfiles">Ažuriranje lista domena</string>
+    <string name="action_use_file">Koristi fajl</string>
+    <string name="persistable_uri_permission_failed">Nije moguće koristiti traženi fajl: nema dozvole za trajno korišćenje tog fajla</string>
+    <string name="updating_n_host_files">Ažuriranje %1$d lista domena</string>
+    <string name="could_not_update_all_hosts">Nije moguće ažurirati sve liste domena</string>
+    <string name="update_success_count">Uspešno ažurirano. Trenutno blokirano: %1$d domena.</string>
+    <string name="host_count_status">Trenutno blokirano: %1$d domena.</string>
+    <string name="host_count_status_empty">Lista još nije preuzeta. Koristite „Osveži liste domena” u meniju.</string>
+    <string name="live_stats_status">Upita: %1$d. Blokirano: %2$d.</string>
+    <string name="stats_history_label">Poslednjih 7 dana</string>
+    <string name="permission_denied">Dozvola odbijena</string>
+    <string name="invalid_url_s">Neispravan URL: %1$s</string>
+    <string name="file_not_found">Fajl nije pronađen</string>
+    <string name="unknown_error_s">Neočekivana greška: %1$s</string>
+    <string name="requested_timed_out">Isteklo je vreme čekanja</string>
+    <string name="action_delete">Obriši</string>
+    <string name="night_mode">Tamna tema</string>
+    <string name="expand_bar_toggle_expand">Otvori panel sa detaljima</string>
+    <string name="expand_bar_toggle_close">Zatvori panel sa detaljima</string>
+    <string name="expand_bar_expanded">Otvoreno</string>
+    <string name="expand_bar_closed">Zatvoreno</string>
+    <string name="action_stop">Zaustavi</string>
+    <string name="action_start">Pokreni</string>
+    <string name="automatic_refresh">Osvežavaj dnevno</string>
+    <string name="automatic_refresh_description">Dnevna ažuriranja se dešavaju dok se telefon puni, miruje, i na mreži bez ograničenja podataka.</string>
+    <string name="watchdog">Nadgledaj konekciju</string>
+    <string name="watchdog_description">Proverava konekciju u sve dužim razmacima i ponovo se povezuje ako prestane da radi</string>
+    <string name="legend_host_intro">Stavke se obrađuju redom. Ako se isti domen pojavi više puta, primenjuje se poslednja stavka. Radnje su:</string>
+    <string name="legend_host_ignore">Zanemari ovu stavku</string>
+    <string name="legend_host_allow">Dozvoli pristup domenima u ovoj stavci</string>
+    <string name="legend_host_deny">Blokiraj pristup domenima u ovoj stavci</string>
+    <string name="do_not_use_dns_server">Isključeno</string>
+    <string name="use_dns_server">Uključeno</string>
+    <string name="switch_onboot_description">Pokreni ZbogomReklame pri uključivanju telefona, ako je bio aktivan kad je telefon ugašen.</string>
+    <string name="activity_edit_dns_server">Izmeni DNS server</string>
+    <string name="activity_edit_filter">Izmeni filter</string>
+    <string name="notification_paused_title">ZbogomReklame pauzirano</string>
+    <string name="notification_paused_text">Dodirnite da nastavite.</string>
+    <string name="notification_action_pause">Pauziraj</string>
+    <string name="allowlist_on_vpn">Nijedna aplikacija</string>
+    <string name="allowlist_not_on_vpn">Sve aplikacije</string>
+    <string name="allowlist_intelligent">Sistemske aplikacije osim pregledača</string>
+    <string name="ipv6_support_description">Isključite ovo ako vaša mreža ne koristi IPv6 ili ako ne možete da pokrenete servis.</string>
+    <string name="ipv6_support">IPv6 podrška</string>
+    <string name="action_logcat">Logcat</string>
+    <string name="notifications_running">Servis u radu</string>
+    <string name="notifications_running_desc">Obaveštenja za rad sa aktivnim servisom</string>
+    <string name="notifications_update">Status</string>
+    <string name="notifications_update_desc">Obaveštenja o ažuriranju lista domena</string>
+    <string name="notifications_paused">Servis pauziran</string>
+    <string name="notifications_paused_desc">Obaveštenja za nastavak rada posle pauze</string>
+    <string name="notifications_group_service">Kontrola servisa</string>
+    <string name="notifications_group_updates">Ažuriranja</string>
+    <string name="unstable_feature">Nestabilna funkcija</string>
+    <string name="unstable_watchdog_message">Nadgledanje konekcije može izazvati ponovno povezivanje i zaglavljivanje konekcije</string>
+    <string name="button_cancel">Otkaži</string>
+    <string name="button_continue">Nastavi</string>
+    <string-array name="allowlist_defaults">
+        <item>Nijedna aplikacija ne zaobilazi po difoltu</item>
+        <item>Sve aplikacije zaobilaze po difoltu</item>
+        <item>Sistemske aplikacije zaobilaze po difoltu</item>
+    </string-array>
+</resources>
