@@ -13,12 +13,16 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PowerManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
@@ -58,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_FILE_OPEN = 1;
     private static final int REQUEST_FILE_STORE = 2;
     private static final int REQUEST_ITEM_EDIT = 3;
+    private static final int REQUEST_NOTIFICATION_PERMISSION = 4;
     public static Configuration config;
     private ViewPager viewPager;
     private final BroadcastReceiver vpnServiceBroadcastReceiver = new BroadcastReceiver() {
@@ -88,6 +93,8 @@ public class MainActivity extends AppCompatActivity {
         // no real effect until the user visited the Hosts tab and toggled it.
         RuleDatabaseUpdateJobService.scheduleOrCancel(this, config);
         org.jak_linux.dns66.vpn.Stats.restore(this);
+
+        requestNeededPermissions();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
@@ -127,6 +134,62 @@ public class MainActivity extends AppCompatActivity {
         viewPager.addOnPageChangeListener(pageChangeListener);
 
         RuleDatabaseUpdateJobService.scheduleOrCancel(this, config);
+    }
+
+    /**
+     * Traži sve dozvole koje su potrebne da bi aplikacija pouzdano radila,
+     * odmah pri prvom otvaranju:
+     * - obaveštenja (Android 13+ zahteva izričitu dozvolu, inače se poruke
+     *   posle ažuriranja liste uopšte ne bi prikazale)
+     * - izuzeće od optimizacije baterije (bez ovoga Android sistem povremeno
+     *   gasi VPN servis u pozadini, pa zaštita i ažuriranje prestaju da rade
+     *   bez ikakvog upozorenja korisniku)
+     * Dozvola za sam VPN (VpnService.prepare) se namerno ne traži ovde - nju
+     * Android ne dozvoljava da se traži unapred, samo u trenutku kad korisnik
+     * stvarno pokrene zaštitu (StartFragment), što je već ispravno urađeno.
+     */
+    private void requestNeededPermissions() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS)
+                    != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{android.Manifest.permission.POST_NOTIFICATIONS},
+                        REQUEST_NOTIFICATION_PERMISSION);
+            }
+        }
+        requestIgnoreBatteryOptimizations();
+    }
+
+    private void requestIgnoreBatteryOptimizations() {
+        PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        if (powerManager == null || powerManager.isIgnoringBatteryOptimizations(getPackageName())) {
+            return;
+        }
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.battery_optimization_title)
+                .setMessage(R.string.battery_optimization_message)
+                .setPositiveButton(R.string.battery_optimization_allow, (dialog, which) -> {
+                    Intent intent = new Intent(android.provider.Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
+                    intent.setData(Uri.parse("package:" + getPackageName()));
+                    try {
+                        startActivity(intent);
+                    } catch (Exception e) {
+                        Log.w("MainActivity", "Could not open battery optimization settings", e);
+                    }
+                })
+                .setNegativeButton(R.string.battery_optimization_later, null)
+                .show();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        // Bez obzira da li je korisnik dozvolio obaveštenja ili ne, nastavljamo
+        // odmah na sledeći korak - izuzeće od optimizacije baterije - da bi se
+        // oba pitanja postavila odmah pri prvom otvaranju, jedno za drugim.
+        if (requestCode == REQUEST_NOTIFICATION_PERMISSION) {
+            requestIgnoreBatteryOptimizations();
+        }
     }
 
     @Override
