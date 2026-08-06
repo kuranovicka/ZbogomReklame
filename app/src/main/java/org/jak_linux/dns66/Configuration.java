@@ -96,7 +96,6 @@ public class Configuration {
                 host.location = newLocation;
             }
         }
-        }
     }
 
     public void runUpdate(int level) {

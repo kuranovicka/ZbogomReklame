@@ -48,14 +48,6 @@ jobs:
           done
           exit 1
 
-      - name: Debug - list build outputs
-        if: always()
-        run: |
-          echo "::warning::OUTPUTS TREE: $(find app/build/outputs -type f 2>&1 | tr '\n' '|' || echo NONE_OR_MISSING)"
-          echo "::warning::APK GLOB MATCHES: $(ls -la app/build/outputs/apk/release/ 2>&1 | tr '\n' '|')"
-          echo "::warning::KEYSTORE FILE: $(ls -la zbogomreklame-release.keystore 2>&1)"
-          echo "::warning::GRADLE TAIL: $(tail -c 2000 build_output.txt 2>&1 | tr '\n' '|')"
-
       - name: Upload APK
         if: steps.build_step.outcome == 'success'
         uses: actions/upload-artifact@v4
