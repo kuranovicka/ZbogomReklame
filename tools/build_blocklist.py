@@ -12,6 +12,7 @@ IZVOR_OISD       = "https://raw.githubusercontent.com/sjhgvr/oisd/main/domainswi
 IZVOR_KRIPTO     = "https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/hosts.txt"
 IZVOR_PREVARE    = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/fake.txt"
 IZVOR_PHISHING   = "https://raw.githubusercontent.com/mitchellkrogza/Phishing.Database/master/phishing-domains-ACTIVE.txt"
+IZVOR_HAGEZI_PRO = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/pro-onlydomains.txt"
 
 def fetch(url):
     req = urllib.request.Request(url, headers={"User-Agent": "ZbogomReklame/1.0"})
@@ -85,6 +86,7 @@ def main():
         (IZVOR_KRIPTO, parse_stevenblack, False),
         (IZVOR_PREVARE, parse_wildcard, False),
         (IZVOR_PHISHING, parse_oisd, False),
+        (IZVOR_HAGEZI_PRO, parse_oisd, False),
     ]
     for url, parser, critical in sources:
         try:
