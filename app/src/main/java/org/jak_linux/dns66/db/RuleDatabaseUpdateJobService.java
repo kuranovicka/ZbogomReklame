@@ -46,9 +46,11 @@ public class RuleDatabaseUpdateJobService extends JobService {
 
         ComponentName serviceName = new ComponentName(context, RuleDatabaseUpdateJobService.class);
 
+        // Ranije se ovde zahtevalo ISTOVREMENO punjenje + mirovanje uređaja + WiFi, pa se
+        // posao u praksi skoro nikad nije pokretao. Sad se traži samo WiFi (da se ne troši
+        // mobilni internet na spisak od par MB), bez zahteva za punjenjem ili mirovanjem -
+        // realno će se ovo dnevno okidati čim se telefon nađe na poznatoj WiFi mreži.
         JobInfo jobInfo = new JobInfo.Builder(JOB_ID, serviceName)
-                .setRequiresCharging(true)
-                .setRequiresDeviceIdle(true)
                 .setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED)
                 .setPersisted(true)
                 .setPeriodic(TimeUnit.DAYS.toMillis(1))

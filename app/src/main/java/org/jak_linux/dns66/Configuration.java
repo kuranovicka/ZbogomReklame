@@ -61,9 +61,35 @@ public class Configuration {
             config.runUpdate(i);
         }
         config.updateURL("http://someonewhocares.org/hosts/hosts", "https://someonewhocares.org/hosts/hosts", 0);
-
+        config.syncBuiltInHostUrls();
 
         return config;
+    }
+
+    /**
+     * Our own built-in host lists (ZbogomReklame) are matched by TITLE here, not by
+     * whatever URL happens to already be stored - and their location is force-set to the
+     * current, correct source every time settings are loaded. This means that if the
+     * hosting repo ever moves again in the future, already-installed apps self-heal on
+     * their own the moment a new build lands, instead of staying permanently stuck on a
+     * dead URL from whenever they were first installed.
+     */
+    private static final String ZBOGOMREKLAME_BASE_URL = "https://raw.githubusercontent.com/kuranovicka/ZbogomReklame/main/";
+
+    public void syncBuiltInHostUrls() {
+        setLocationForTitle("Glavna lista (reklame, malver, phishing, prevare, kripto-majning)", ZBOGOMREKLAME_BASE_URL + "zbogomreklame_hosts.txt");
+        setLocationForTitle("Filter kockanja", ZBOGOMREKLAME_BASE_URL + "filter_kockanje.txt");
+        setLocationForTitle("Filter sadržaja za odrasle", ZBOGOMREKLAME_BASE_URL + "filter_odraslih.txt");
+        setLocationForTitle("Filter lažnih vesti", ZBOGOMREKLAME_BASE_URL + "filter_lazne_vesti.txt");
+    }
+
+    private void setLocationForTitle(String title, String newLocation) {
+        for (Item host : hosts.items) {
+            if (host.title.equals(title) && !host.location.equals(newLocation)) {
+                Log.i(TAG, "syncBuiltInHostUrls: Updating '" + title + "' URL to current source");
+                host.location = newLocation;
+            }
+        }
     }
 
     public void runUpdate(int level) {

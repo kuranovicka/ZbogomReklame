@@ -7,8 +7,8 @@ android {
         applicationId "org.jak_linux.dns66"
         minSdkVersion 21
         targetSdkVersion 33
-        versionCode 29
-        versionName "0.6.8"
+        versionCode 30
+        versionName "0.6.9"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
