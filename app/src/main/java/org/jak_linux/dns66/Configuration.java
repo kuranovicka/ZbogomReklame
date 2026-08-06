@@ -77,10 +77,16 @@ public class Configuration {
     private static final String ZBOGOMREKLAME_BASE_URL = "https://raw.githubusercontent.com/kuranovicka/ZbogomReklame/main/";
 
     public void syncBuiltInHostUrls() {
+        // Glavna lista je posebna kombinacija 7 izvora koju sastavlja Windows program - nju
+        // i dalje čuvamo kao jedan gotov fajl u repou.
         setLocationForTitle("Glavna lista (reklame, malver, phishing, prevare, kripto-majning)", ZBOGOMREKLAME_BASE_URL + "zbogomreklame_hosts.txt");
-        setLocationForTitle("Filter kockanja", ZBOGOMREKLAME_BASE_URL + "filter_kockanje.txt");
-        setLocationForTitle("Filter sadržaja za odrasle", ZBOGOMREKLAME_BASE_URL + "filter_odraslih.txt");
-        setLocationForTitle("Filter lažnih vesti", ZBOGOMREKLAME_BASE_URL + "filter_lazne_vesti.txt");
+        // Ova tri opciona filtera su svaki po jedan-na-jedan StevenBlack izvor - Windows ih
+        // vuče uživo direktno sa StevenBlack-a (vidi IZVOR_KOCKANJE/IZVOR_ODRASLI/IZVOR_VESTI
+        // u azuriranje.c), pa i Android sad gađa iste te adrese direktno, bez posredne
+        // statične kopije u našem repou koja bi mogla da zaostane.
+        setLocationForTitle("Filter kockanja", "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-only/hosts");
+        setLocationForTitle("Filter sadržaja za odrasle", "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn-only/hosts");
+        setLocationForTitle("Filter lažnih vesti", "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-only/hosts");
     }
 
     private void setLocationForTitle(String title, String newLocation) {
@@ -89,6 +95,7 @@ public class Configuration {
                 Log.i(TAG, "syncBuiltInHostUrls: Updating '" + title + "' URL to current source");
                 host.location = newLocation;
             }
+        }
         }
     }
 
