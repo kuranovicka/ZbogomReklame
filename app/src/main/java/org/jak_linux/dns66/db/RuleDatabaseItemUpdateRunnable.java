@@ -116,6 +116,9 @@ class RuleDatabaseItemUpdateRunnable implements Runnable {
             if (!validateResponse(connection))
                 return;
             downloadFile(file, singleWriterMultipleReaderFile, connection);
+            // Stiglo je 200 (ne 304 "nije menjano") i uspešno je snimljeno -
+            // znači da je sadržaj stvarno nov, ne samo ponovo preuzet isti.
+            parentTask.addChanged(item);
         } catch (SocketTimeoutException e) {
             parentTask.addError(item, context.getString(R.string.requested_timed_out));
         }catch (IOException e) {

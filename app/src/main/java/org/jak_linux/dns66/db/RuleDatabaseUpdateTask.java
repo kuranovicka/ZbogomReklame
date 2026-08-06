@@ -49,6 +49,7 @@ public class RuleDatabaseUpdateTask extends AsyncTask<Void, Void, Void> {
     ArrayList<String> errors = new ArrayList<>();
     List<String> pending = new ArrayList<>();
     List<String> done = new ArrayList<>();
+    private final java.util.concurrent.atomic.AtomicBoolean anyChanged = new java.util.concurrent.atomic.AtomicBoolean(false);
     private NotificationManager notificationManager;
     private NotificationCompat.Builder notificationBuilder;
 
@@ -184,8 +185,12 @@ public class RuleDatabaseUpdateTask extends AsyncTask<Void, Void, Void> {
         if (notificationBuilder != null) {
             if (errors.isEmpty()) {
                 notificationBuilder.setProgress(0, 0, false);
-                notificationBuilder.setContentText(
-                        context.getString(R.string.update_success_count, RuleDatabase.getInstance().getSize()));
+                if (hasChanges()) {
+                    notificationBuilder.setContentText(
+                            context.getString(R.string.update_success_count, RuleDatabase.getInstance().getSize()));
+                } else {
+                    notificationBuilder.setContentText(context.getString(R.string.update_already_current));
+                }
                 notificationBuilder.setSmallIcon(R.drawable.ic_state_deny);
                 notificationBuilder.setAutoCancel(true);
                 notificationManager.notify(UPDATE_NOTIFICATION_ID, notificationBuilder.build());
@@ -245,5 +250,18 @@ public class RuleDatabaseUpdateTask extends AsyncTask<Void, Void, Void> {
 
     synchronized long pendingCount() {
         return pending.size();
+    }
+
+    /**
+     * Marks that an item's content actually changed (server returned 200 with new
+     * data, not 304 Not Modified) - used to tell "successfully updated with new
+     * content" apart from "already up to date, nothing new" in the result message.
+     */
+    void addChanged(Configuration.Item item) {
+        anyChanged.set(true);
+    }
+
+    boolean hasChanges() {
+        return anyChanged.get();
     }
 }

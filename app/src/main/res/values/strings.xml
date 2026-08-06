@@ -75,6 +75,7 @@
     <string name="updating_n_host_files">Ažuriranje %1$d lista domena</string>
     <string name="could_not_update_all_hosts">Nije moguće ažurirati sve liste domena</string>
     <string name="update_success_count">Uspešno ažurirano. Trenutno blokirano: %1$d domena.</string>
+    <string name="update_already_current">Lista je već ažurna, nema novih izmena.</string>
     <string name="host_count_status">Trenutno blokirano: %1$d domena.</string>
     <string name="host_count_status_empty">Lista još nije preuzeta. Koristite „Osveži liste domena” u meniju.</string>
     <string name="live_stats_status">Upita: %1$d. Blokirano: %2$d.</string>
