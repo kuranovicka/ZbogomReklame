@@ -24,8 +24,16 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Build debug APK
-        run: ./gradlew assembleDebug 2>&1 | tee build_output.txt
+      - name: Decode signing keystore
+        run: echo "${{ secrets.ZBOGOMREKLAME_KEYSTORE_BASE64 }}" | base64 -d > zbogomreklame-release.keystore
+
+      - name: Build signed release APK
+        env:
+          ZBOGOMREKLAME_KEYSTORE_PATH: ${{ github.workspace }}/zbogomreklame-release.keystore
+          ZBOGOMREKLAME_KEYSTORE_PASSWORD: ${{ secrets.ZBOGOMREKLAME_KEYSTORE_PASSWORD }}
+          ZBOGOMREKLAME_KEY_ALIAS: ${{ secrets.ZBOGOMREKLAME_KEY_ALIAS }}
+          ZBOGOMREKLAME_KEY_PASSWORD: ${{ secrets.ZBOGOMREKLAME_KEY_PASSWORD }}
+        run: ./gradlew assembleRelease 2>&1 | tee build_output.txt
         continue-on-error: true
         id: build_step
 
@@ -44,8 +52,8 @@ jobs:
         if: steps.build_step.outcome == 'success'
         uses: actions/upload-artifact@v4
         with:
-          name: ZbogomReklame-debug-apk
-          path: app/build/outputs/apk/debug/*.apk
+          name: ZbogomReklame-release-apk
+          path: app/build/outputs/apk/release/*.apk
 
       - name: Create GitHub Release with APK
         if: steps.build_step.outcome == 'success'
@@ -53,7 +61,7 @@ jobs:
         with:
           tag_name: build-${{ github.run_number }}
           name: Build ${{ github.run_number }}
-          files: app/build/outputs/apk/debug/*.apk
+          files: app/build/outputs/apk/release/*.apk
           prerelease: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
